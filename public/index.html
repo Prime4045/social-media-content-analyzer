@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Social Media Content Analyzer — Raghav Gupta</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icons (Material Icons) -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="app">
+        <header class="topbar">
+            <div class="brand">
+                <img src="./logo.png" alt="SMCA Logo" class="logo">
+                <div>
+                    <h1>Social Media Content Analyzer</h1>
+                    <p class="subtitle">Upload • Extract • Improve — built for Unthinkable Solutions</p>
+                </div>
+            </div>
+            <div class="meta">
+                <small>By <strong>Raghav Gupta</strong></small>
+            </div>
+        </header>
+
+        <section class="grid">
+            <!-- left column: upload + extracted text -->
+            <div class="card column-left">
+                <h2>1. Upload & Extract</h2>
+
+                <label class="file-drop" id="fileDrop">
+                    <input id="fileInput" type="file" accept=".pdf,.txt,image/*" />
+                    <div class="file-inner">
+                        <span class="material-icons">cloud_upload</span>
+                        <p>Drag & drop a PDF / TXT / Image here<br /><small>or click to choose</small></p>
+                        <div class="hint">Supported: PDF, TXT, PNG, JPG</div>
+                    </div>
+                </label>
+
+                <div class="row actions">
+                    <button id="uploadBtn" class="btn primary">Extract</button>
+                    <button id="ocrBtn" class="btn" title="Run OCR on image file">OCR (image)</button>
+                    <div class="spacer"></div>
+                    <button id="downloadTxt" class="btn ghost" title="Download extracted text">Download</button>
+                    <button id="copyTxt" class="btn ghost" title="Copy text">Copy</button>
+                </div>
+
+                <div class="progress" id="progressWrap" aria-hidden="true">
+                    <div id="progressBar" class="progress-bar" style="width:0%"></div>
+                </div>
+
+                <label class="label">2. Extracted / Pasted Text</label>
+                <textarea id="textInput"
+                    placeholder="Extraction result will appear here — you can edit before analyzing."
+                    rows="10"></textarea>
+
+                <div class="row small-row">
+                    <button id="analyzeBtn" class="btn accent">Analyze</button>
+                    <button id="clearBtn" class="btn ghost">Clear</button>
+                    <div class="spacer"></div>
+                    <div id="status" class="status">Idle</div>
+                </div>
+            </div>
+
+            <!-- right column: results -->
+            <div class="card column-right">
+                <div class="result-header">
+                    <h2>Suggestions & Insights</h2>
+                    <small>Actionable tips to boost engagement</small>
+                </div>
+
+                <div id="results" class="results empty">
+                    <div class="empty-state">
+                        <span class="material-icons">insights</span>
+                        <p>No analysis yet — upload or paste text and click <strong>Analyze</strong>.</p>
+                        <button id="insertSample" class="btn tiny">Insert sample post</button>
+                    </div>
+                </div>
+
+                <div class="insights" id="insights"></div>
+
+                <div class="footer-note">
+                    <small>Make sure to push your code to GitHub (branch `main`) and include this repository link in
+                        your submission.</small>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
